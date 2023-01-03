@@ -9,6 +9,11 @@ fn main() {
         println!("{}, got \"{}\"", err, args[1..].join(" "));
         process::exit(1);
     });
+
+    run(config);
+}
+
+fn run(config: Config) {
     println!(
         "Searching for {} in {}...",
         config.query,
@@ -16,7 +21,7 @@ fn main() {
     );
 
     let contents = fs::read_to_string(&config.file_paths[0]).unwrap_or_else(|err| {
-        println!("Error reading file \"{}\\"": {}", config.file_paths[0], err);
+        println!("Error reading file \"{}\": {}", config.file_paths[0], err);
         process::exit(1);
     });
 
