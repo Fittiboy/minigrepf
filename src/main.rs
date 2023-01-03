@@ -10,8 +10,8 @@ fn main() {
         process::exit(1);
     });
 
-    let result = minigrep::run(&config).unwrap_or_else(|err| {
-        println!("Error reading file \"{}\": {}", config.file_paths()[0], err);
+    let result = minigrep::run(config).unwrap_or_else(|err| {
+        println!("{}", err);
         process::exit(1);
     });
 

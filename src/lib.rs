@@ -18,19 +18,16 @@ impl<'a> Config<'a> {
             return Err("Expected a regex pattern followed by one or more file names");
         };
     }
-
-    pub fn file_paths(&self) -> &[String] {
-        self.file_paths
-    }
 }
 
-pub fn run(config: &Config) -> Result<String, Box<dyn Error>> {
+pub fn run(config: Config) -> Result<String, Box<dyn Error>> {
     println!(
         "Searching for {} in {}...",
         config.query,
         config.file_paths.join(", ")
     );
 
-    let contents = fs::read_to_string(&config.file_paths[0])?;
+    let contents = fs::read_to_string(&config.file_paths[0])
+        .map_err(|err| format!("Error reading file \"{}\": {}", config.file_paths[0], err))?;
     return Ok(format!("With text:\n{}", contents));
 }
