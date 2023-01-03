@@ -3,10 +3,8 @@ use std::env;
 use std::process;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
-    let config = Config::build(&args).unwrap_or_else(|err| {
-        eprintln!("{}, got \"{}\"", err, args[1..].join(" "));
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
+        eprintln!("{}", err);
         process::exit(1);
     });
 

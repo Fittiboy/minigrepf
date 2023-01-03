@@ -2,30 +2,39 @@ use std::env;
 use std::error::Error;
 use std::fs;
 
-pub struct Config<'a> {
-    query: &'a String,
-    file_paths: &'a [String],
+pub struct Config {
+    query: String,
+    file_path: String,
     ignore_case: bool,
 }
 
-impl<'a> Config<'a> {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() > 2 {
-            let config = Config {
-                query: &args[1],
-                file_paths: &args[2..],
-                ignore_case: env::var("IGNORE_CASE").is_ok(),
-            };
-            return Ok(config);
-        } else {
-            return Err("Expected a regex pattern followed by one or more file names");
+impl Config {
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        args.next();
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Missing query string"),
         };
+
+        let file_path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Missing file path"),
+        };
+
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+        Ok(Config {
+            query,
+            file_path,
+            ignore_case,
+        })
     }
 }
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    let contents = fs::read_to_string(&config.file_paths[0])
-        .map_err(|err| format!("Error reading file \"{}\": {}", config.file_paths[0], err))?;
+    let contents = fs::read_to_string(&config.file_path)
+        .map_err(|err| format!("Error reading file \"{}\": {}", config.file_path, err))?;
     let search_fn = if config.ignore_case {
         search_case_insensitive
     } else {
