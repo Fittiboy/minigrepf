@@ -11,10 +11,12 @@ fn main() {
         process::exit(1);
     });
 
-    run(&config).unwrap_or_else(|err| {
+    let result = run(&config).unwrap_or_else(|err| {
         println!("Error reading file \"{}\": {}", config.file_paths[0], err);
         process::exit(1);
     });
+
+    println!("{}", result)
 }
 
 fn run(config: &Config) -> Result<String, Box<dyn Error>> {
