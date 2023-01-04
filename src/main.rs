@@ -1,4 +1,4 @@
-use minigrep::Config;
+use minigrepf::Config;
 use std::env;
 use std::process;
 
@@ -8,7 +8,7 @@ fn main() {
         process::exit(1);
     });
 
-    if let Err(err) = minigrep::run(config) {
+    if let Err(err) = minigrepf::run(config) {
         eprintln!("{}", err);
         process::exit(1);
     }

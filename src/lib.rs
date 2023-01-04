@@ -1,13 +1,13 @@
-//! # minigrep
+//! # minigrepf
 //!
-//! `minigrep` is a tiny command line tool built as an exercise from the book
+//! `minigrepf` is a tiny command line tool built as an exercise from the book
 //! "The Rust Programming Language," chapter 12.
 //!
 //! ## Usage
 //!
 //! ```shell
 //! $ ls
-//! poem.txt minigrep
+//! poem.txt minigrepf
 //!
 //! $ cat poem.txt
 //! I'm nobody! Who are you?
@@ -20,11 +20,11 @@
 //! To tell your name the livelong day
 //! To an admiring bog!
 //!
-//! $ ./minigrep to poem.txt
+//! $ ./minigrepf to poem.txt
 //! Are you nobody, too?
 //! How dreary to be somebody!
 //!
-//! $ IGNORE_CASE=1 ./minigrep to poem.txt
+//! $ IGNORE_CASE=1 ./minigrepf to poem.txt
 //! Are you nobody, too?
 //! How dreary to be somebody!
 //! To tell your name the livelong day
@@ -70,10 +70,10 @@ impl Config {
 /// # Examples
 ///
 /// ```
-/// let config = minigrep::Config::build(vec![String::from("./minigrep"),
+/// let config = minigrepf::Config::build(vec![String::from("./minigrepf"),
 ///                                           String::from("frog"),
 ///                                           String::from("poem.txt")].into_iter());
-/// let result = minigrep::run(config.unwrap());
+/// let result = minigrepf::run(config.unwrap());
 /// assert_eq!(result.unwrap(), ());
 /// ```
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
