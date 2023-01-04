@@ -2,7 +2,7 @@
 authors = ["Fitti <dev@fitti.io>"]
 name = "minigrepf"
 license = "MIT"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "A tiny grep clone to search a single file, with an IGNORE_CASE environment variable option."
 repository = "https://github.com/Fittiby/minigrepf"
