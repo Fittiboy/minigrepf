@@ -6,6 +6,8 @@ version = "0.1.0"
 edition = "2021"
 description = "A tiny grep clone to search a single file, with an IGNORE_CASE environment variable option."
 repository = "https://github.com/Fittiby/minigrepf"
+keywords = ["grep"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
