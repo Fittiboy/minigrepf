@@ -1,11 +1,11 @@
-# minigrep
-This is the simple `minigrep` command line tool from the book "The Rust Programming Language,"
+# minigrepf
+This is the simple `minigrepf` command line tool from the book "The Rust Programming Language,"
 chapter 12.  
 
 Usage:
 ```
 $ ls
-poem.txt minigrep
+poem.txt minigrepf
 
 $ cat poem.txt
 I'm nobody! Who are you?
@@ -18,11 +18,11 @@ How public, like a frog
 To tell your name the livelong day
 To an admiring bog!
 
-$ ./minigrep to poem.txt
+$ ./minigrepf to poem.txt
 Are you nobody, too?
 How dreary to be somebody!
 
-$ IGNORE_CASE=1 ./minigrep to poem.txt
+$ IGNORE_CASE=1 ./minigrepf to poem.txt
 Are you nobody, too?
 How dreary to be somebody!
 To tell your name the livelong day
