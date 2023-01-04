@@ -1,7 +1,9 @@
 [package]
-name = "minigrep"
+name = "minigrep-Fitti"
+license = "MIT"
 version = "0.1.0"
 edition = "2021"
+description = "A tiny grep clone to search a single file, with an IGNORE_CASE environment variable option."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
