@@ -32,6 +32,17 @@ impl Config {
     }
 }
 
+/// Runs the command line tool with the Config inferred from command line options
+///
+/// # Examples
+///
+/// ```
+/// let config = minigrep::Config::build(vec![String::from("./minigrep"),
+///                                           String::from("frog"),
+///                                           String::from("poem.txt")].into_iter());
+/// let result = minigrep::run(config.unwrap());
+/// assert_eq!(result.unwrap(), ());
+/// ```
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(&config.file_path)
         .map_err(|err| format!("Error reading file \"{}\": {}", config.file_path, err))?;
