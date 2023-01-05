@@ -70,9 +70,14 @@ impl Config {
 /// # Examples
 ///
 /// ```
-/// let config = minigrepf::Config::build(vec![String::from("./minigrepf"),
-///                                           String::from("frog"),
-///                                           String::from("poem.txt")].into_iter());
+/// let config = minigrepf::Config::build(
+///     vec![
+///         String::from("./minigrepf"),
+///         String::from("frog"),
+///         String::from("poem.txt"),
+///     ]
+///     .into_iter(),
+/// );
 /// let result = minigrepf::run(config.unwrap());
 /// assert_eq!(result.unwrap(), ());
 /// ```
@@ -136,4 +141,17 @@ Trust me.";
             search_case_insensitive(query, contents)
         );
     }
+}
+
+fn temp() {
+    let config = minigrepf::Config::build(
+        vec![
+            String::from("./minigrepf"),
+            String::from("frog"),
+            String::from("poem.txt"),
+        ]
+        .into_iter(),
+    );
+    let result = minigrepf::run(config.unwrap());
+    assert_eq!(result.unwrap(), ());
 }
