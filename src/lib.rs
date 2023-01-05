@@ -142,16 +142,3 @@ Trust me.";
         );
     }
 }
-
-fn temp() {
-    let config = minigrepf::Config::build(
-        vec![
-            String::from("./minigrepf"),
-            String::from("frog"),
-            String::from("poem.txt"),
-        ]
-        .into_iter(),
-    );
-    let result = minigrepf::run(config.unwrap());
-    assert_eq!(result.unwrap(), ());
-}
